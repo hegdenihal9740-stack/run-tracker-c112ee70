@@ -1,0 +1,182 @@
+[
+  {
+    "id": "job-title",
+    "label": "Job Title *",
+    "kind": "input",
+    "type": "text",
+    "required": true,
+    "options": [],
+    "placeholder": ""
+  },
+  {
+    "id": "department",
+    "label": "Department *",
+    "kind": "select",
+    "type": "text",
+    "required": true,
+    "options": ["", "IT", "Marketing", "Finance", "HR", "Operations"],
+    "placeholder": ""
+  },
+  {
+    "id": "vacancies",
+    "label": "Number of Vacancies *",
+    "kind": "input",
+    "type": "number",
+    "required": true,
+    "options": [],
+    "placeholder": ""
+  },
+  {
+    "id": "employment-type",
+    "label": "Employment Type *",
+    "kind": "select",
+    "type": "text",
+    "required": true,
+    "options": ["", "Full-time", "Part-time", "Contract", "Internship"],
+    "placeholder": ""
+  },
+  {
+    "id": "work-location",
+    "label": "Work Location *",
+    "kind": "input",
+    "type": "text",
+    "required": true,
+    "options": [],
+    "placeholder": ""
+  },
+  {
+    "id": "joining-date",
+    "label": "Preferred Joining Date",
+    "kind": "input",
+    "type": "date",
+    "required": false,
+    "options": [],
+    "placeholder": ""
+  },
+  {
+    "id": "experience",
+    "label": "Required Experience *",
+    "kind": "input",
+    "type": "text",
+    "required": true,
+    "options": [],
+    "placeholder": "e.g., 3 years"
+  },
+  {
+    "id": "skills",
+    "label": "Required Skills *",
+    "kind": "textarea",
+    "type": "text",
+    "required": true,
+    "options": [],
+    "placeholder": "Comma separated skills"
+  },
+  {
+    "id": "responsibilities",
+    "label": "Job Responsibilities *",
+    "kind": "textarea",
+    "type": "text",
+    "required": true,
+    "options": [],
+    "placeholder": ""
+  },
+  {
+    "id": "qualification",
+    "label": "Qualification *",
+    "kind": "input",
+    "type": "text",
+    "required": true,
+    "options": [],
+    "placeholder": ""
+  },
+  {
+    "id": "reporting-manager",
+    "label": "Reporting Manager",
+    "kind": "input",
+    "type": "text",
+    "required": false,
+    "options": [],
+    "placeholder": ""
+  },
+  {
+    "id": "basic-salary",
+    "label": "Basic Salary",
+    "kind": "input",
+    "type": "number",
+    "required": false,
+    "options": [],
+    "placeholder": ""
+  },
+  {
+    "id": "allowances",
+    "label": "Allowances",
+    "kind": "input",
+    "type": "number",
+    "required": false,
+    "options": [],
+    "placeholder": ""
+  },
+  {
+    "id": "deductions",
+    "label": "Deductions",
+    "kind": "input",
+    "type": "number",
+    "required": false,
+    "options": [],
+    "placeholder": ""
+  },
+  {
+    "id": "total-ctc",
+    "label": "Total CTC",
+    "kind": "input",
+    "type": "number",
+    "required": false,
+    "options": [],
+    "placeholder": ""
+  },
+  {
+    "id": "payment-mode",
+    "label": "Payment Mode",
+    "kind": "select",
+    "type": "text",
+    "required": false,
+    "options": ["Bank Transfer", "Cash", "Cheque"],
+    "placeholder": ""
+  },
+  {
+    "id": "status",
+    "label": "Status",
+    "kind": "select",
+    "type": "text",
+    "required": false,
+    "options": ["Draft", "Pending", "Approved"],
+    "placeholder": ""
+  },
+  {
+    "id": "state",
+    "label": "State of the Employee",
+    "kind": "input",
+    "type": "text",
+    "required": false,
+    "options": [],
+    "placeholder": ""
+  },
+  {
+    "id": "documents",
+    "label": "Required Documents",
+    "kind": "textarea",
+    "type": "text",
+    "required": false,
+    "options": [],
+    "placeholder": "Comma separated documents"
+  },
+  {
+    "id": "notes",
+    "label": "Additional Notes",
+    "kind": "textarea",
+    "type": "text",
+    "required": false,
+    "options": [],
+    "placeholder": ""
+  }
+]

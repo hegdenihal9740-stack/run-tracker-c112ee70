@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HR Management Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h2 id="sidebar-title" style="cursor: pointer;">HR Management</h2>
+        </div>
+        <ul class="sidebar-menu">
+            <li class="menu-item has-sub-menu active" data-page="hr">
+                <span>HR</span>
+                <span class="arrow">▶</span>
+                <ul class="sub-menu">
+                    <li class="sub-menu-item" data-page="hiring">Hiring</li>
+                    <li class="sub-menu-item" data-page="performance">Performance</li>
+                    <li class="sub-menu-item" data-page="payroll">Payroll</li>
+                    <li class="sub-menu-item" data-page="records">Records</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="main-content">
+        <!-- Top Header -->
+        <div class="top-header">
+            <div class="header-left">
+                <h1 id="page-title">Hiring</h1>
+            </div>
+        </div>
+
+        <!-- Dashboard Content -->
+        <div id="content-area">
+            <!-- Dashboard Page -->
+            
+            <!-- Placeholder Pages -->
+                                                                        <div id="hiring" class="page active">
+                <div class="hiring-container">
+                    <div class="tabs">
+                        <button class="tab-button" data-tab="hiring-tab">Hiring</button>
+                        <button class="tab-button active" data-tab="existing-tab">Existing</button>
+                        <button class="tab-button" data-tab="lock-tab">Lock</button>
+                        <button class="small-green-btn" id="green-btn">+</button>
+                    </div>
+                    <div id="hiring-tab" class="tab-content">
+                        <h2>Job Requirements</h2>
+                        <table class="hiring-table">
+                            <thead>
+                                <tr>
+                                    <th>Sl No</th>
+                                    <th>Job Title</th>
+                                    <th>Department</th>
+                                    <th>Vacancies</th>
+                                    <th>Employment Type</th>
+                                    <th>Work Location</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Software Engineer</td>
+                                    <td>IT</td>
+                                    <td>2</td>
+                                    <td>Full-time</td>
+                                    <td>Office</td>
+                                    <td>Open</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Marketing Manager</td>
+                                    <td>Marketing</td>
+                                    <td>1</td>
+                                    <td>Full-time</td>
+                                    <td>Office</td>
+                                    <td>Open</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Accountant</td>
+                                    <td>Finance</td>
+                                    <td>1</td>
+                                    <td>Full-time</td>
+                                    <td>Office</td>
+                                    <td>Closed</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="existing-tab" class="tab-content active">
+                        <h2>Existing Employees</h2>
+                        <table class="existing-table">
+                            <thead>
+                                <tr>
+                                    <th>Employee ID</th>
+                                    <th>Name</th>
+                                    <th>Department</th>
+                                    <th>Designation</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>EMP001</td>
+                                    <td>John Doe</td>
+                                    <td>IT</td>
+                                    <td>Software Engineer</td>
+                                    <td>Active</td>
+                                </tr>
+                                <tr>
+                                    <td>EMP002</td>
+                                    <td>Jane Smith</td>
+                                    <td>Marketing</td>
+                                    <td>Marketing Manager</td>
+                                    <td>Active</td>
+                                </tr>
+                                <tr>
+                                    <td>EMP003</td>
+                                    <td>Bob Johnson</td>
+                                    <td>Finance</td>
+                                    <td>Accountant</td>
+                                    <td>Active</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="lock-tab" class="tab-content">
+                        <h2>Lock Functionality</h2>
+                        <p>Lock functionality coming soon.</p>
+                    </div>
+                </div>
+                <!-- Create Job Requirement Form -->
+                <div id="create-job-form" class="create-job-form" style="display: none;">
+                    <div class="form-container">
+                        <h1>Create Job Requirement</h1>
+                        <p>Fill in the details below to create a new job requirement that will be sent to Head Office for approval.</p>
+                        <form id="job-requirement-form">
+                            <div class="form-row">
+                                <div class="form-column">
+                                    <div class="form-group">
+                                        <label for="job-title">Job Title *</label>
+                                        <input type="text" id="job-title" name="job-title" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="department">Department *</label>
+                                        <select id="department" name="department" required>
+                                            <option value="">Select Department</option>
+                                            <option value="IT">IT</option>
+                                            <option value="Marketing">Marketing</option>
+                                            <option value="Finance">Finance</option>
+                                            <option value="HR">HR</option>
+                                            <option value="Operations">Operations</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="vacancies">Number of Vacancies *</label>
+                                        <input type="number" id="vacancies" name="vacancies" min="1" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="employment-type">Employment Type *</label>
+                                        <select id="employment-type" name="employment-type" required>
+                                            <option value="">Select Employment Type</option>
+                                            <option value="Full-time">Full-time</option>
+                                            <option value="Part-time">Part-time</option>
+                                            <option value="Contract">Contract</option>
+                                            <option value="Internship">Internship</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="work-location">Work Location *</label>
+                                        <input type="text" id="work-location" name="work-location" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="joining-date">Preferred Joining Date</label>
+                                        <input type="date" id="joining-date" name="joining-date">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="experience">Required Experience *</label>
+                                        <input type="text" id="experience" name="experience" placeholder="e.g., 3 years" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="skills">Required Skills *</label>
+                                        <textarea id="skills" name="skills" rows="3" placeholder="Comma separated skills" required></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="responsibilities">Job Responsibilities *</label>
+                                        <textarea id="responsibilities" name="responsibilities" rows="4" required></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-column">
+                                    <div class="form-group">
+                                        <label for="qualification">Qualification *</label>
+                                        <input type="text" id="qualification" name="qualification" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="reporting-manager">Reporting Manager</label>
+                                        <input type="text" id="reporting-manager" name="reporting-manager">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="basic-salary">Basic Salary</label>
+                                        <input type="number" id="basic-salary" name="basic-salary" step="0.01">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="allowances">Allowances</label>
+                                        <input type="number" id="allowances" name="allowances" step="0.01">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="deductions">Deductions</label>
+                                        <input type="number" id="deductions" name="deductions" step="0.01">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="total-ctc">Total CTC</label>
+                                        <input type="number" id="total-ctc" name="total-ctc" step="0.01">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="payment-mode">Payment Mode</label>
+                                        <select id="payment-mode" name="payment-mode">
+                                            <option value="Bank Transfer">Bank Transfer</option>
+                                            <option value="Cash">Cash</option>
+                                            <option value="Cheque">Cheque</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="status">Status</label>
+                                        <select id="status" name="status">
+                                            <option value="Draft">Draft</option>
+                                            <option value="Pending">Pending</option>
+                                            <option value="Approved">Approved</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="state">State of the Employee</label>
+                                        <input type="text" id="state" name="state">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="documents">Required Documents</label>
+                                        <textarea id="documents" name="documents" rows="3" placeholder="Comma separated documents"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="notes">Additional Notes</label>
+                                        <textarea id="notes" name="notes" rows="3"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn-submit-head-office">Submit to Head Office</button>
+                                <button type="button" id="cancel-btn" class="cancel-btn">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+                                                            
+            <!-- Admin Page -->
+            
+            <!-- Logout Page -->
+            
+            <!-- Sub-menu Pages -->
+                                                                                                                                                <div id="performance" class="page">
+                <h1>Employee Performance Dashboard</h1>
+                <div class="summary-cards">
+                    <div class="card">
+                        <h3>Total Employees</h3>
+                        <p class="value" style="color: green;">5</p>
+                    </div>
+                    <div class="card">
+                        <h3>Average Score</h3>
+                        <p class="value" style="color: green;">87.6</p>
+                    </div>
+                    <div class="card">
+                        <h3>Top Performer</h3>
+                        <p class="value" style="color: green;">Charlie Wilson</p>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="performanceChart"></canvas>
+                </div>
+
+            </div>
+            <div id="payroll" class="page">
+                <div class="payroll-container">
+                    <div class="page-header">
+                        <h1>Payroll Working Sheet</h1>
+                        <p>Manage employee payroll details and calculations</p>
+                    </div>
+                    <form action="/hr/payroll" method="post">
+                        <div class="payroll-table-container">
+                            <table class="payroll-table">
+                                <thead>
+                                    <tr>
+                                        <th>Sl No</th>
+                                        <th>Employee Name</th>
+                                        <th>Days Working</th>
+                                        <th>Leave</th>
+                                        <th>Govt Holiday</th>
+                                        <th>Sunday</th>
+                                        <th>Training</th>
+                                        <th>Total Working Days</th>
+                                        <th>Basic Salary</th>
+                                        <th>Allowances</th>
+                                        <th>Deductions</th>
+                                        <th>Total CTC</th>
+                                        <th>Payment Mode</th>
+                                        <th>Net Salary</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><input type="text" name="sl_no_1" value="1" class="form-input"></td>
+                                        <td><input type="text" name="employee_name_1" class="form-input"></td>
+                                        <td><input type="number" name="days_working_1" class="form-input"></td>
+                                        <td><input type="number" name="leave_1" class="form-input"></td>
+                                        <td><input type="number" name="govt_holiday_1" class="form-input"></td>
+                                        <td><input type="number" name="sunday_1" class="form-input"></td>
+                                        <td><input type="number" name="training_1" class="form-input"></td>
+                                        <td><input type="number" name="total_working_days_1" class="form-input"></td>
+                                        <td><input type="number" name="basic_salary_1" step="0.01" class="form-input"></td>
+                                        <td><input type="number" name="allowances_1" step="0.01" class="form-input"></td>
+                                        <td><input type="number" name="deductions_1" step="0.01" class="form-input"></td>
+                                        <td><input type="number" name="total_ctc_1" step="0.01" class="form-input"></td>
+                                        <td>
+                                            <select name="payment_mode_1" class="form-select">
+                                                <option value="Bank Transfer">Bank Transfer</option>
+                                                <option value="Cheque">Cheque</option>
+                                                <option value="Cash">Cash</option>
+                                            </select>
+                                        </td>
+                                        <td><input type="number" name="net_salary_1" step="0.01" class="form-input"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="text" name="sl_no_2" value="2" class="form-input"></td>
+                                        <td><input type="text" name="employee_name_2" class="form-input"></td>
+                                        <td><input type="number" name="days_working_2" class="form-input"></td>
+                                        <td><input type="number" name="leave_2" class="form-input"></td>
+                                        <td><input type="number" name="govt_holiday_2" class="form-input"></td>
+                                        <td><input type="number" name="sunday_2" class="form-input"></td>
+                                        <td><input type="number" name="training_2" class="form-input"></td>
+                                        <td><input type="number" name="total_working_days_2" class="form-input"></td>
+                                        <td><input type="number" name="basic_salary_2" step="0.01" class="form-input"></td>
+                                        <td><input type="number" name="allowances_2" step="0.01" class="form-input"></td>
+                                        <td><input type="number" name="deductions_2" step="0.01" class="form-input"></td>
+                                        <td><input type="number" name="total_ctc_2" step="0.01" class="form-input"></td>
+                                        <td>
+                                            <select name="payment_mode_2" class="form-select">
+                                                <option value="Bank Transfer">Bank Transfer</option>
+                                                <option value="Cheque">Cheque</option>
+                                                <option value="Cash">Cash</option>
+                                            </select>
+                                        </td>
+                                        <td><input type="number" name="net_salary_2" step="0.01" class="form-input"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="text" name="sl_no_3" value="3" class="form-input"></td>
+                                        <td><input type="text" name="employee_name_3" class="form-input"></td>
+                                        <td><input type="number" name="days_working_3" class="form-input"></td>
+                                        <td><input type="number" name="leave_3" class="form-input"></td>
+                                        <td><input type="number" name="govt_holiday_3" class="form-input"></td>
+                                        <td><input type="number" name="sunday_3" class="form-input"></td>
+                                        <td><input type="number" name="training_3" class="form-input"></td>
+                                        <td><input type="number" name="total_working_days_3" class="form-input"></td>
+                                        <td><input type="number" name="basic_salary_3" step="0.01" class="form-input"></td>
+                                        <td><input type="number" name="allowances_3" step="0.01" class="form-input"></td>
+                                        <td><input type="number" name="deductions_3" step="0.01" class="form-input"></td>
+                                        <td><input type="number" name="total_ctc_3" step="0.01" class="form-input"></td>
+                                        <td>
+                                            <select name="payment_mode_3" class="form-select">
+                                                <option value="Bank Transfer">Bank Transfer</option>
+                                                <option value="Cheque">Cheque</option>
+                                                <option value="Cash">Cash</option>
+                                            </select>
+                                        </td>
+                                        <td><input type="number" name="net_salary_3" step="0.01" class="form-input"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="text" name="sl_no_4" value="4" class="form-input"></td>
+                                        <td><input type="text" name="employee_name_4" class="form-input"></td>
+                                        <td><input type="number" name="days_working_4" class="form-input"></td>
+                                        <td><input type="number" name="leave_4" class="form-input"></td>
+                                        <td><input type="number" name="govt_holiday_4" class="form-input"></td>
+                                        <td><input type="number" name="sunday_4" class="form-input"></td>
+                                        <td><input type="number" name="training_4" class="form-input"></td>
+                                        <td><input type="number" name="total_working_days_4" class="form-input"></td>
+                                        <td><input type="number" name="basic_salary_4" step="0.01" class="form-input"></td>
+                                        <td><input type="number" name="allowances_4" step="0.01" class="form-input"></td>
+                                        <td><input type="number" name="deductions_4" step="0.01" class="form-input"></td>
+                                        <td><input type="number" name="total_ctc_4" step="0.01" class="form-input"></td>
+                                        <td>
+                                            <select name="payment_mode_4" class="form-select">
+                                                <option value="Bank Transfer">Bank Transfer</option>
+                                                <option value="Cheque">Cheque</option>
+                                                <option value="Cash">Cash</option>
+                                            </select>
+                                        </td>
+                                        <td><input type="number" name="net_salary_4" step="0.01" class="form-input"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="text" name="sl_no_5" value="5" class="form-input"></td>
+                                        <td><input type="text" name="employee_name_5" class="form-input"></td>
+                                        <td><input type="number" name="days_working_5" class="form-input"></td>
+                                        <td><input type="number" name="leave_5" class="form-input"></td>
+                                        <td><input type="number" name="govt_holiday_5" class="form-input"></td>
+                                        <td><input type="number" name="sunday_5" class="form-input"></td>
+                                        <td><input type="number" name="training_5" class="form-input"></td>
+                                        <td><input type="number" name="total_working_days_5" class="form-input"></td>
+                                        <td><input type="number" name="basic_salary_5" step="0.01" class="form-input"></td>
+                                        <td><input type="number" name="allowances_5" step="0.01" class="form-input"></td>
+                                        <td><input type="number" name="deductions_5" step="0.01" class="form-input"></td>
+                                        <td><input type="number" name="total_ctc_5" step="0.01" class="form-input"></td>
+                                        <td>
+                                            <select name="payment_mode_5" class="form-select">
+                                                <option value="Bank Transfer">Bank Transfer</option>
+                                                <option value="Cheque">Cheque</option>
+                                                <option value="Cash">Cash</option>
+                                            </select>
+                                        </td>
+                                        <td><input type="number" name="net_salary_5" step="0.01" class="form-input"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn-submit">Submit Payroll</button>
+                            <button type="button" class="btn-cancel">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div id="records" class="page">
+                <div class="container">
+                    <h1>Employee Records</h1>
+
+                    <h2>Job Requirements (Hiring Records)</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Job Title</th>
+                                <th>Department</th>
+                                <th>Vacancies</th>
+                                <th>Employment Type</th>
+                                <th>Work Location</th>
+                                <th>Status</th>
+                                <th>Created At</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+
+                    <h2>Existing Employees</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Department</th>
+                                <th>Role</th>
+                                <th>Employee ID</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
