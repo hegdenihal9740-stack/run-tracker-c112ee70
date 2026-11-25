@@ -420,6 +420,22 @@ body {
 .hr-table td:first-child {
   color: var(--muted-foreground);
 }
+.hr-table input,
+.hr-table select {
+  width: 100%;
+  min-width: 90px;
+  padding: 6px 10px;
+  background: var(--background);
+  color: var(--foreground);
+  border: 1px solid var(--input);
+  border-radius: 6px;
+  font-size: 12px;
+}
+.hr-table input:focus,
+.hr-table select:focus {
+  outline: 2px solid var(--ring);
+  outline-offset: 1px;
+}
 .hr-status {
   display: inline-block;
   color: var(--hr-success);
