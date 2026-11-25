@@ -6,3 +6,6 @@
 # Reference theme
 - [ ] Apply the reference's dark background, translucent surfaces, and compact top navigation across HR pages.
 - [ ] Verify styling and existing workflows at desktop and mobile sizes.
+
+# Smart payroll
+- [x] Auto totals, add/remove rows, employee picker.

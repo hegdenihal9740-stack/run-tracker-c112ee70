@@ -634,3 +634,11 @@ body {
     transition: none !important;
   }
 }
+
+.hr-calc {
+  display: block;
+  min-width: 5rem;
+  padding: 0.4rem 0.5rem;
+  font-weight: 600;
+  color: var(--primary);
+}

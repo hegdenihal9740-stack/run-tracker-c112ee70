@@ -98,3 +98,17 @@ export function pageHead(title: string, description: string) {
     ],
   };
 }
+
+/** Fills calculated payroll cells: total days = worked + holidays + Sundays + training (leave excluded); CTC = basic + allowances; net = CTC − deductions. */
+export function recalcPayrollRow(row: PayrollRow): PayrollRow {
+  const n = (i: number) => Number(row[i]) || 0;
+  const has = (...idx: number[]) => idx.some((i) => (row[i] ?? "") !== "");
+  const out = [...row];
+  out[7] = has(2, 4, 5, 6) ? String(n(2) + n(4) + n(5) + n(6)) : "";
+  const ctc = n(8) + n(9);
+  out[11] = has(8, 9) ? ctc.toFixed(2) : "";
+  out[13] = has(8, 9, 10) ? (ctc - n(10)).toFixed(2) : "";
+  return out;
+}
+export const blankPayrollRow = (index: number): PayrollRow =>
+  payrollColumns.map((_, col) => (col === 0 ? String(index + 1) : col === 12 ? "Bank Transfer" : ""));
