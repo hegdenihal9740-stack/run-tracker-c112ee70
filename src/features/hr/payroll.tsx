@@ -1,10 +1,23 @@
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
-import { Plus, Trash2 } from "lucide-react";
-import { blankPayrollRow, emptyPayroll, employees, payrollColumns, recalcPayrollRow } from "./data";
+import { useEffect, useState } from "react";
+import { FileDown, Plus, Trash2 } from "lucide-react";
+import { usePayrollSheet, useSavePayroll, useEmployees } from "./db";
+import { openPayslip } from "./payslip";
+import { blankPayrollRow, emptyPayroll, payrollColumns, recalcPayrollRow } from "./data";
 import { useHR } from "./context";
 export function PayrollPage() {
   const { payroll, setPayroll, savedPayroll, setSavedPayroll } = useHR();
+  const [month, setMonth] = useState(() => new Date().toISOString().slice(0, 7));
+  const { data: employees = [] } = useEmployees();
+  const sheet = usePayrollSheet(month);
+  const savePayroll = useSavePayroll();
+  useEffect(() => {
+    if (sheet.isSuccess) {
+      setPayroll(sheet.data?.map((r) => [...r]) ?? emptyPayroll());
+      setSavedPayroll(sheet.data ?? null);
+    }
+  }, [sheet.isSuccess, sheet.data, setPayroll, setSavedPayroll]);
   function update(row: number, col: number, value: string) {
     setPayroll((rows) =>
       rows.map((r, i) =>
@@ -23,12 +36,23 @@ export function PayrollPage() {
   }
   return (
     <section>
-      <h2>Payroll Working Sheet</h2>
+      <div className="hr-toolbar">
+        <h2>Payroll Working Sheet</h2>
+        <div className="hr-field">
+          <label htmlFor="payroll-month">Month</label>
+          <input id="payroll-month" type="month" value={month} onChange={(e) => e.target.value && setMonth(e.target.value)} />
+        </div>
+      </div>
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          setSavedPayroll(payroll.map((r) => [...r]));
-          toast.success("Payroll kept for this session.");
+          savePayroll.mutate(
+            { month, rows: payroll },
+            {
+              onSuccess: () => toast.success(`Payroll for ${month} saved.`),
+              onError: (err) => toast.error(err.message),
+            },
+          );
         }}
       >
         <div className="hr-table-scroll">
@@ -72,7 +96,18 @@ export function PayrollPage() {
                       )}
                     </td>
                   ))}
-                  <td>
+                  <td className="whitespace-nowrap">
+                    <Button
+                      type="button"
+                      variant="ghost"
+                      size="icon"
+                      aria-label={`Download payslip row ${i + 1}`}
+                      title="Download payslip"
+                      disabled={!row[1]}
+                      onClick={() => openPayslip(row, month)}
+                    >
+                      <FileDown />
+                    </Button>
                     <Button
                       type="button"
                       variant="ghost"
@@ -107,7 +142,7 @@ export function PayrollPage() {
           >
             Cancel
           </Button>
-          <Button type="submit">Keep Payroll</Button>
+          <Button type="submit" disabled={savePayroll.isPending}>Save Payroll</Button>
         </div>
       </form>
     </section>

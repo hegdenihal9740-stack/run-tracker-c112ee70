@@ -1,4 +1,5 @@
-import { employees, type Job } from "./data";
+import { type Job } from "./data";
+import { useEmployees } from "./db";
 export function JobTable({ jobs, records = false }: { jobs: Job[]; records?: boolean }) {
   return (
     <div className="hr-table-scroll">
@@ -57,10 +58,11 @@ export function EmployeeTable({
   search?: string;
   department?: string;
 }) {
+  const { data: employees = [] } = useEmployees();
   const filtered = employees.filter(
     (e) =>
       (department === "All" || e.department === department) &&
-      `${e.id} ${e.name} ${e.department} ${e.role}`.toLowerCase().includes(search.toLowerCase()),
+      `${e.code} ${e.name} ${e.department} ${e.role}`.toLowerCase().includes(search.toLowerCase()),
   );
   return (
     <div className="hr-table-scroll">
@@ -75,7 +77,7 @@ export function EmployeeTable({
         <tbody>
           {filtered.map((e) => (
             <tr key={e.id}>
-              <td>{e.id}</td>
+              <td>{e.code}</td>
               <td>{e.name}</td>
               <td>{e.department}</td>
               <td>{e.role}</td>

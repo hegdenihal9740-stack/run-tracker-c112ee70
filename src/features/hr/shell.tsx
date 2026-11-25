@@ -1,16 +1,24 @@
 import type { ReactNode } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
-import { BriefcaseBusiness, ChartNoAxesCombined, Wallet, Files, Layers } from "lucide-react";
+import { BriefcaseBusiness, ChartNoAxesCombined, Wallet, Files, Layers, Users, CalendarDays, ChartPie, LogOut } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+import { LoginScreen, useSession } from "./auth";
 import { Button } from "@/components/ui/button";
 const navigation = [
   { to: "/" as const, label: "Hiring", icon: BriefcaseBusiness },
+  { to: "/employees" as const, label: "Employees", icon: Users },
+  { to: "/leave" as const, label: "Leave", icon: CalendarDays },
   { to: "/performance" as const, label: "Performance", icon: ChartNoAxesCombined },
   { to: "/payroll" as const, label: "Payroll", icon: Wallet },
   { to: "/records" as const, label: "Records", icon: Files },
+  { to: "/reports" as const, label: "Reports", icon: ChartPie },
 ];
 export function HRShell({ children }: { children: ReactNode }) {
   const pathname = useRouterState({ select: (state) => state.location.pathname });
   const current = navigation.find((item) => item.to === pathname);
+  const { session, ready } = useSession();
+  if (!ready) return <div className="hr-login" />;
+  if (!session) return <LoginScreen />;
   return (
     <div className="hr-shell">
       <header className="hr-topbar">
@@ -39,7 +47,12 @@ export function HRShell({ children }: { children: ReactNode }) {
             </Button>
           ))}
         </nav>
-        <span className="hr-workspace-label">Human Resources</span>
+        <span className="hr-workspace-label">
+          {session.user.email}
+          <Button variant="ghost" size="icon" aria-label="Sign out" title="Sign out" onClick={() => supabase.auth.signOut()}>
+            <LogOut size={18} />
+          </Button>
+        </span>
       </header>
       <div className="hr-main">
         <header className="hr-header">
