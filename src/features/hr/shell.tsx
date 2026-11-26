@@ -1,11 +1,10 @@
 import type { ReactNode } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
-import { BriefcaseBusiness, ChartNoAxesCombined, Wallet, Files, Layers, Users, CalendarDays, ChartPie } from "lucide-react";
+import { BriefcaseBusiness, ChartNoAxesCombined, Wallet, Files, Layers, Users, ChartPie } from "lucide-react";
 import { Button } from "@/components/ui/button";
 const navigation = [
   { to: "/" as const, label: "Hiring", icon: BriefcaseBusiness },
   { to: "/employees" as const, label: "Employees", icon: Users },
-  { to: "/leave" as const, label: "Leave", icon: CalendarDays },
   { to: "/performance" as const, label: "Performance", icon: ChartNoAxesCombined },
   { to: "/payroll" as const, label: "Payroll", icon: Wallet },
   { to: "/records" as const, label: "Records", icon: Files },

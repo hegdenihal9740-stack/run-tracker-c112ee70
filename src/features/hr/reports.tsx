@@ -1,8 +1,7 @@
-import { useEmployees, useLeaveRequests } from "./db";
+import { useEmployees } from "./db";
 
 export function ReportsPage() {
   const { data: employees = [] } = useEmployees();
-  const { data: leave = [] } = useLeaveRequests();
   const active = employees.filter((e) => e.status === "Active");
   const resigned = employees.filter((e) => e.status === "Resigned").length;
   const byDept = Object.entries(
@@ -20,7 +19,6 @@ export function ReportsPage() {
     ["Active", active.length],
     ["Attrition", employees.length ? `${Math.round((resigned / employees.length) * 100)}%` : "0%"],
     ["Monthly Salary Cost", active.reduce((s, e) => s + (Number(e.basic_salary) || 0), 0).toLocaleString()],
-    ["Pending Leave", leave.filter((l) => l.status === "Pending").length],
   ];
   return (
     <section>

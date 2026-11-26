@@ -11,7 +11,6 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as EmployeesRouteImport } from './routes/employees'
-import { Route as LeaveRouteImport } from './routes/leave'
 import { Route as PayrollRouteImport } from './routes/payroll'
 import { Route as PerformanceRouteImport } from './routes/performance'
 import { Route as RecordsRouteImport } from './routes/records'
@@ -26,11 +25,6 @@ const IndexRoute = IndexRouteImport.update({
 const EmployeesRoute = EmployeesRouteImport.update({
   id: '/employees',
   path: '/employees',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const LeaveRoute = LeaveRouteImport.update({
-  id: '/leave',
-  path: '/leave',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PayrollRoute = PayrollRouteImport.update({
@@ -62,7 +56,6 @@ const ResetPasswordRoute = ResetPasswordRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/employees': typeof EmployeesRoute
-  '/leave': typeof LeaveRoute
   '/payroll': typeof PayrollRoute
   '/performance': typeof PerformanceRoute
   '/records': typeof RecordsRoute
@@ -72,7 +65,6 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/employees': typeof EmployeesRoute
-  '/leave': typeof LeaveRoute
   '/payroll': typeof PayrollRoute
   '/performance': typeof PerformanceRoute
   '/records': typeof RecordsRoute
@@ -83,7 +75,6 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/employees': typeof EmployeesRoute
-  '/leave': typeof LeaveRoute
   '/payroll': typeof PayrollRoute
   '/performance': typeof PerformanceRoute
   '/records': typeof RecordsRoute
@@ -95,7 +86,6 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/employees'
-    | '/leave'
     | '/payroll'
     | '/performance'
     | '/records'
@@ -105,7 +95,6 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/employees'
-    | '/leave'
     | '/payroll'
     | '/performance'
     | '/records'
@@ -115,7 +104,6 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/employees'
-    | '/leave'
     | '/payroll'
     | '/performance'
     | '/records'
@@ -126,7 +114,6 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   EmployeesRoute: typeof EmployeesRoute
-  LeaveRoute: typeof LeaveRoute
   PayrollRoute: typeof PayrollRoute
   PerformanceRoute: typeof PerformanceRoute
   RecordsRoute: typeof RecordsRoute
@@ -148,13 +135,6 @@ declare module '@tanstack/react-router' {
       path: '/employees'
       fullPath: '/employees'
       preLoaderRoute: typeof EmployeesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/leave': {
-      id: '/leave'
-      path: '/leave'
-      fullPath: '/leave'
-      preLoaderRoute: typeof LeaveRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/payroll': {
@@ -198,7 +178,6 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   EmployeesRoute: EmployeesRoute,
-  LeaveRoute: LeaveRoute,
   PayrollRoute: PayrollRoute,
   PerformanceRoute: PerformanceRoute,
   RecordsRoute: RecordsRoute,
