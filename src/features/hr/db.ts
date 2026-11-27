@@ -1,5 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
+import { useHR } from "./context";
 import type { Database } from "@/integrations/supabase/types";
 
 export type Employee = Database["public"]["Tables"]["employees"]["Row"];
@@ -8,7 +9,8 @@ export type LeaveRequest = Database["public"]["Tables"]["leave_requests"]["Row"]
 export type LeaveInput = Database["public"]["Tables"]["leave_requests"]["Insert"];
 
 export function useEmployees() {
-  return useQuery({
+  const { sessionEmployees } = useHR();
+  const query = useQuery({
     queryKey: ["employees"],
     queryFn: async () => {
       const { data, error } = await supabase.from("employees").select("*").order("code");
@@ -16,12 +18,18 @@ export function useEmployees() {
       return data;
     },
   });
+  return { ...query, data: [...(query.data ?? []), ...sessionEmployees] };
 }
 
 export function useSaveEmployee() {
+  const { sessionEmployees, setSessionEmployees } = useHR();
   const qc = useQueryClient();
   return useMutation({
     mutationFn: async (e: EmployeeInput) => {
+      if (sessionEmployees.some(row => row.id === e.id)) {
+        setSessionEmployees(old => old.map(row => row.id === e.id ? { ...row, ...e } : row));
+        return;
+      }
       const { error } = e.id
         ? await supabase.from("employees").update(e).eq("id", e.id)
         : await supabase.from("employees").insert(e);
@@ -32,9 +40,14 @@ export function useSaveEmployee() {
 }
 
 export function useDeleteEmployee() {
+  const { sessionEmployees, setSessionEmployees } = useHR();
   const qc = useQueryClient();
   return useMutation({
     mutationFn: async (id: string) => {
+      if (sessionEmployees.some(row => row.id === id)) {
+        setSessionEmployees(old => old.filter(row => row.id !== id));
+        return;
+      }
       const { error } = await supabase.from("employees").delete().eq("id", id);
       if (error) throw error;
     },

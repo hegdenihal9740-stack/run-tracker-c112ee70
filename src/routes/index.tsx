@@ -4,17 +4,17 @@ import { createFileRoute } from "@tanstack/react-router";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "HR Management Dashboard" },
+      { title: "Recruitment & Hiring | HR Management" },
       {
         name: "description",
         content:
-          "Manage hiring, employee performance, payroll, and personnel records in one HR workspace.",
+          "Track candidates, manage interviews, review offers, and convert hires into employee profiles.",
       },
-      { property: "og:title", content: "HR Management Dashboard" },
+      { property: "og:title", content: "Recruitment & Hiring | HR Management" },
       {
         property: "og:description",
         content:
-          "Manage hiring, employee performance, payroll, and personnel records in one HR workspace.",
+          "Track candidates, manage interviews, review offers, and convert hires into employee profiles.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

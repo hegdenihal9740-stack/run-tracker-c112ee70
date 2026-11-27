@@ -3,10 +3,11 @@ import { Plus, Search, LockKeyhole } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { JobTable, EmployeeTable } from "./tables";
 import { JobForm } from "./job-form";
+import { RecruitmentBoard } from "./recruitment";
 import { useHR } from "./context";
 
 export function HiringPage() {
-  const [tab, setTab] = useState("Existing");
+  const [tab, setTab] = useState("Recruitment");
   const [creating, setCreating] = useState(false);
   const [search, setSearch] = useState("");
   const [department, setDepartment] = useState("All");
@@ -23,7 +24,7 @@ export function HiringPage() {
   return (
     <section>
       <div className="hr-tabs" role="tablist" aria-label="Hiring views">
-        {["Hiring", "Existing", "Lock"].map((label) => (
+        {["Recruitment", "Hiring", "Existing", "Lock"].map((label) => (
           <Button
             key={label}
             variant="ghost"
@@ -35,8 +36,8 @@ export function HiringPage() {
             onClick={() => setTab(label)}
             onKeyDown={(event) => {
               if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
-              const tabs = ["Hiring", "Existing", "Lock"];
-              const next = tabs[(tabs.indexOf(tab) + (event.key === "ArrowRight" ? 1 : 2)) % 3];
+              const tabs = ["Recruitment", "Hiring", "Existing", "Lock"];
+              const next = tabs[(tabs.indexOf(tab) + (event.key === "ArrowRight" ? 1 : 3)) % 4];
               if (next) {
                 setTab(next);
                 document.getElementById(`tab-${next}`)?.focus();
@@ -57,7 +58,7 @@ export function HiringPage() {
         </Button>
       </div>
       <div role="tabpanel" id={`panel-${tab}`} aria-labelledby={`tab-${tab}`}>
-        {tab === "Lock" ? (
+        {tab === "Recruitment" ? <RecruitmentBoard /> : tab === "Lock" ? (
           <div className="hr-empty hr-lock">
             <LockKeyhole size={32} />
             <h2>Lock Functionality</h2>

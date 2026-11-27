@@ -56,6 +56,7 @@ function renderHR(ui: ReactElement) {
 describe("Native HR interactions", () => {
   it("filters employees by input and department", async () => {
     renderHR(<HiringPage />);
+    fireEvent.click(screen.getByRole("tab", { name: "Existing" }));
     fireEvent.change(screen.getByLabelText("Search employees"), { target: { value: "Jane" } });
     expect(await screen.findByText("Jane Smith")).toBeInTheDocument();
     expect(screen.queryByText("John Doe")).not.toBeInTheDocument();

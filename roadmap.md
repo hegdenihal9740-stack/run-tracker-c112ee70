@@ -9,3 +9,7 @@
 
 # Smart payroll
 - [x] Auto totals, add/remove rows, employee picker.
+
+# Recruitment board
+- [ ] Add candidate board/list, filters, profiles, notes, interview scorecards, and hiring conversion.
+- [ ] Verify candidate-to-employee flow and desktop/mobile layouts.

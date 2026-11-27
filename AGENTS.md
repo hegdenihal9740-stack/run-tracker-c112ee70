@@ -34,3 +34,5 @@ use the editor.
 - Keep shared HR data in a root-mounted React provider; this frontend-only conversion retains edits during navigation, not across reloads, and must not pretend to send approvals or persist data.
 - Define HR context and its consumer hook outside the provider component module so preview Fast Refresh cannot give providers and consumers different context identities.
 - Keep domain pages, imported fixture data, and shared tables in `src/features/hr` so route files remain small and presentation logic is reusable.
+
+- Keep recruitment candidates and converted hires in the root HR provider and merge session hires into employee queries; login-free recruiting must not expose protected staff data or imply durable saving.

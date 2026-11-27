@@ -685,3 +685,62 @@ body {
 .hr-bar { height: 0.7rem; border-radius: 999px; background: var(--muted); overflow: hidden; }
 .hr-bar > div { height: 100%; background: var(--primary); }
 .hr-workspace-label { display: inline-flex; align-items: center; gap: 0.5rem; }
+
+/* Recruitment workspace shares the HR theme. */
+.ats-heading { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; margin-bottom: 24px; }
+.ats-heading h2 { margin: 5px 0 0; font-size: 24px; }
+.ats-eyebrow { font-size: 10px; color: var(--muted-foreground); }
+.ats-metrics { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); border-block: 1px solid var(--border); margin-bottom: 24px; }
+.ats-metrics > div { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; padding: 18px 14px; }
+.ats-metrics svg { color: var(--hr-teal); flex-shrink: 0; }
+.ats-metrics strong { font-size: 22px; }
+.ats-metrics span { font-size: 11px; color: var(--muted-foreground); }
+.ats-controls { align-items: center; }
+.ats-view-switch { margin-left: auto; display: flex; gap: 3px; border: 1px solid var(--border); border-radius: 6px; padding: 3px; }
+.ats-board { display: grid; grid-template-columns: repeat(6, minmax(220px, 1fr)); gap: 14px; overflow-x: auto; max-width: 100%; padding-bottom: 18px; scrollbar-color: var(--secondary) transparent; }
+.ats-column { --stage-color: var(--primary); min-width: 0; }
+.ats-screening { --stage-color: var(--hr-teal); }
+.ats-interview { --stage-color: var(--hr-amber); }
+.ats-offer { --stage-color: var(--hr-rose); }
+.ats-hired { --stage-color: var(--hr-success); }
+.ats-rejected { --stage-color: var(--muted-foreground); }
+.ats-column header { display: flex; align-items: center; gap: 8px; padding: 14px 5px; border-bottom: 2px solid var(--stage-color); }
+.ats-stage-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--stage-color); }
+.ats-count { margin-left: auto; color: var(--muted-foreground); font-size: 12px; }
+.ats-column-body { display: flex; flex-direction: column; gap: 12px; padding-top: 14px; min-height: 280px; }
+.ats-card { border: 1px solid var(--border); border-radius: 8px; background: var(--card); padding: 14px; transition: border-color 160ms; }
+.ats-card:hover { border-color: var(--stage-color); }
+.ats-card-open { display: flex; width: 100%; padding: 0; height: auto; white-space: normal; justify-content: flex-start; text-align: left; gap: 9px; }
+.ats-avatar { width: 34px; height: 34px; flex: 0 0 34px; display: grid; place-items: center; border-radius: 50%; background: var(--accent); color: var(--foreground); font-size: 11px; }
+.ats-person { min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+.ats-person strong { font-size: 12px; overflow-wrap: anywhere; }
+.ats-person > span { font-size: 10px; font-weight: 400; color: var(--muted-foreground); overflow-wrap: anywhere; }
+.ats-card-meta { display: flex; justify-content: space-between; gap: 8px; margin-block: 16px 12px; font-size: 10px; color: var(--muted-foreground); }
+.ats-card-meta > span { display: flex; align-items: center; gap: 4px; }
+.ats-card-footer { display: flex; justify-content: space-between; align-items: center; gap: 8px; border-top: 1px solid var(--border); padding-top: 8px; font-size: 10px; color: var(--muted-foreground); min-height: 38px; }
+.ats-card-footer button { width: 28px; height: 28px; }
+.ats-column-empty { padding-top: 24px; text-align: center; font-size: 12px; color: var(--muted-foreground); }
+.ats-card-date { font-size: 10px; color: var(--hr-amber); margin-bottom: 12px; }
+.ats-drawer { width: min(100%, 560px); max-width: 560px; overflow-y: auto; }
+.ats-profile-form h3, .ats-notes h3 { margin: 24px 0 14px; font-size: 14px; font-weight: 600; }
+.ats-scorecard { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 10px; }
+.ats-note { border-left: 2px solid var(--hr-teal); padding-left: 12px; margin-bottom: 16px; font-size: 13px; overflow-wrap: anywhere; }
+.ats-note time { font-size: 10px; color: var(--muted-foreground); }
+.ats-note p { margin-top: 6px; white-space: pre-wrap; }
+.ats-notes .hr-field { margin-block: 18px 12px; }
+.ats-create { max-height: 90dvh; overflow-y: auto; width: calc(100% - 24px); border-radius: 8px; }
+.ats-batch { align-items: center; font-size: 12px; }
+.ats-reason { background: var(--popover); border: 1px solid var(--input); border-radius: 6px; padding: 8px; color: var(--foreground); }
+.ats-name-button { padding: 0; height: auto; }
+.hr-table input[type=checkbox] { width: 16px; min-width: 16px; height: 16px; accent-color: var(--primary); }
+@media(max-width: 640px) {
+  .ats-metrics { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .ats-metrics > div { padding: 14px 6px; }
+  .ats-metrics span { flex-basis: 100%; }
+  .ats-controls { align-items: stretch; }
+  .ats-view-switch { align-self: flex-end; }
+  .ats-drawer .hr-form-grid { grid-template-columns: minmax(0,1fr); }
+  .ats-scorecard { grid-template-columns: minmax(0,1fr); }
+  .hr-tabs { gap: 0; }
+  .hr-tab { padding-inline: 8px; font-size: 11px; }
+}
